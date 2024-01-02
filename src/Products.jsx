@@ -1,37 +1,12 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import { useContext } from 'react'
-import { ProductContext } from './ProductContext'
-import { useState } from 'react';
-
+import { useUserContext } from './context/ProductContext'
 
 function Products() {
-    // usecontext for fetch data from ProductContext
-    const data = useContext(ProductContext);
-    // useState for quantity
-    const [quantity, setQuantity] = useState(Array(data.products.length).fill(1));
-    //onChange handler
-    const onOptionChangeHandler = (event, index) => {
-        const selectedValue = event.target.value;
+    // fetching data from ProductContext
+    const { data, quantity, onOptionChangeHandler, options } = useUserContext();
 
-        setQuantity((previousValue) => {
-            const newValue = [...previousValue];
-            newValue[index] = parseInt(selectedValue, 6);
-            return newValue
-        })
-    };
-    // Creating options for select tag
-    const options = () => {
-        const option = [];
-        for (let i = 1; i <= 5; i++) {
-            option.push(<option key={i} value={i}>{i}</option>)
-        }
-        return option;
-    }
     return (
-
-
-
         <div className='container bg-secondary-subtle'>
             {
                 //map fuction for itrates the data 

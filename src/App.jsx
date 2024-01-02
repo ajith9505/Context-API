@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react'
 import Products from './Products';
-import data from './product.json'
-import { ProductContext } from './ProductContext';
+import { UserContextProvider } from './context/ProductContext';
 
 function App() {
 
   return (
     <div className='bg-secondary-subtle'>
+      {/* Header */}
       <header className="bg-primary text-center">
         <h1>Cart</h1>
       </header>
       {/* Context API provoider */}
-      <ProductContext.Provider value={data}>
+      <UserContextProvider>
         <Products />
-      </ProductContext.Provider>
+      </UserContextProvider>
     </div>
   )
 };
